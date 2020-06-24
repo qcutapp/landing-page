@@ -10,7 +10,16 @@ $navbar-height: 56px; // computed manually
 // Default desktop breakpoint from bootstrap
 $breakpointFor100vh: map-get($grid-breakpoints, "md");
 
-// Design
+.navbar {
+  @media (min-width: $breakpointFor100vh) {
+    background-color: transparent;
+  }
+  background-color: #b71632;
+  &.has-bg {
+    background-color: #b71632;
+  }
+}
+
 div.anchor {
   display: block;
   position: relative;
@@ -18,8 +27,8 @@ div.anchor {
   visibility: hidden;
 }
 
+// full height on medium devices
 section.fullheight {
-  // full height on desktop
   .row {
     @media (min-width: $breakpointFor100vh) {
       height: calc(100vh - 56px); // TODO: Using $navbar-height is breaking
@@ -37,13 +46,15 @@ section.fullheight {
 }
 
 .home {
-  // display: none;
-
   position: relative;
   background: linear-gradient(75deg, #000000 14%, #b71632 60%) !important;
 
   .row {
-    margin-top: $navbar-height !important;
+    padding-top: #{$navbar-height * 2} !important;
+
+    @media (min-width: $breakpointFor100vh) {
+      height: 100vh !important; // TODO: Using $navbar-height is breaking
+    }
   }
 
   .on-top {
@@ -53,7 +64,7 @@ section.fullheight {
   .overlay {
     position: absolute;
     left: 0;
-    bottom: -1px; // ! BREAKING: This is a temporary fix to remove the border line
+    bottom: -3rem; // ! BREAKING: This is a temporary fix to remove the border line
     width: 100%;
 
     // TODO: Make the "wave" responsive as well.s
@@ -62,17 +73,19 @@ section.fullheight {
   }
 }
 
+.spacer {
+  height: 6rem;
+}
+
 // TODO: Images need to resize as per content
 .howitworks {
-  display: none;
-
-  p {
-    color: $text-muted;
+  .howitworks-image img {
+    max-width: 70%;
+    height: auto;
   }
 }
 
 .features {
-  // display: none;
   background: linear-gradient(
     45deg,
     rgba(246, 87, 75, 1) 0%,
@@ -86,12 +99,7 @@ section.fullheight {
   }
 }
 
-.customers {
-  // display: none;
-}
-
 .venues {
-  // display: none;
   background-color: #2f2f42;
 
   p {
@@ -100,14 +108,11 @@ section.fullheight {
 }
 
 .covid-19 {
-  // display: none;
   background: url("../images/people.png") center no-repeat;
   background-size: cover;
 }
 
 .contact {
-  // display: none;
-
   img.social {
     width: 42px;
     height: auto;
