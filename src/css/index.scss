@@ -1,0 +1,130 @@
+// Theme variables and overrides
+$font-family-sans-serif: "Poppins";
+$headings-font-family: "Oswald";
+$navbar-height: 56px; // computed manually
+
+// Load bootstrap variables
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+
+// Default desktop breakpoint from bootstrap
+$breakpointFor100vh: map-get($grid-breakpoints, "md");
+
+// Design
+div.anchor {
+  display: block;
+  position: relative;
+  top: -$navbar-height;
+  visibility: hidden;
+}
+
+section.fullheight {
+  // full height on desktop
+  .row {
+    @media (min-width: $breakpointFor100vh) {
+      height: calc(100vh - 56px); // TODO: Using $navbar-height is breaking
+    }
+    .col-sm {
+      height: 100%;
+    }
+  }
+}
+
+@media (min-width: $breakpointFor100vh) {
+  h1 {
+    font-size: 4.5rem !important;
+  }
+}
+
+.home {
+  // display: none;
+
+  position: relative;
+  background: linear-gradient(75deg, #000000 14%, #b71632 60%) !important;
+
+  .row {
+    margin-top: $navbar-height !important;
+  }
+
+  .on-top {
+    z-index: 100;
+  }
+
+  .overlay {
+    position: absolute;
+    left: 0;
+    bottom: -1px; // ! BREAKING: This is a temporary fix to remove the border line
+    width: 100%;
+
+    // TODO: Make the "wave" responsive as well.s
+    img {
+    }
+  }
+}
+
+// TODO: Images need to resize as per content
+.howitworks {
+  display: none;
+
+  p {
+    color: $text-muted;
+  }
+}
+
+.features {
+  // display: none;
+  background: linear-gradient(
+    45deg,
+    rgba(246, 87, 75, 1) 0%,
+    rgba(183, 22, 44, 1) 45%,
+    rgba(219, 60, 48, 1) 100%
+  );
+
+  .feature-image img {
+    width: 50%;
+    height: auto;
+  }
+}
+
+.customers {
+  // display: none;
+}
+
+.venues {
+  // display: none;
+  background-color: #2f2f42;
+
+  p {
+    font-size: 0.75rem;
+  }
+}
+
+.covid-19 {
+  // display: none;
+  background: url("../images/people.png") center no-repeat;
+  background-size: cover;
+}
+
+.contact {
+  // display: none;
+
+  img.social {
+    width: 42px;
+    height: auto;
+  }
+
+  a {
+    color: #e74c3c !important;
+  }
+}
+
+.img-fit {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+// Load google fonts
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Poppins&display=swap");
+
+// Import bootstrap
+@import "~bootstrap/scss/bootstrap";

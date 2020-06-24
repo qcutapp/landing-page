@@ -1,0 +1,12 @@
+# parcel cache
+.cache/
+
+# build
+dist/
+
+# npm
+node_modules/
+yarn.lock
+
+# client requirements
+.freelancer/
