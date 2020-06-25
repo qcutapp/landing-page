@@ -1,7 +1,11 @@
 // Theme variables and overrides
 $font-family-sans-serif: "Poppins";
-$headings-font-family: "Oswald";
+$headings-font-family: "Dosis";
+$tagline-font-family: "Poppins";
 $navbar-height: 56px; // computed manually
+
+$headings-font-weight: 200;
+$red: rgba(255, 30, 60);
 
 // Load bootstrap variables
 @import "~bootstrap/scss/_functions";
@@ -27,6 +31,12 @@ div.anchor {
   visibility: hidden;
 }
 
+.buttons {
+  button {
+    border-radius: 1.5rem;
+  }
+}
+
 // full height on medium devices
 section.fullheight {
   .row {
@@ -50,7 +60,9 @@ section.fullheight {
   background: linear-gradient(75deg, #000000 14%, #b71632 60%) !important;
 
   .row {
-    padding-top: #{$navbar-height * 2} !important;
+    .phone {
+      padding-top: #{$navbar-height * 2} !important;
+    }
 
     @media (min-width: $breakpointFor100vh) {
       height: 100vh !important; // TODO: Using $navbar-height is breaking
@@ -61,10 +73,16 @@ section.fullheight {
     z-index: 100;
   }
 
+  .tagline {
+    font-family: $tagline-font-family;
+    font-weight: 100;
+    font-size: 2rem !important;
+  }
+
   .overlay {
     position: absolute;
     left: 0;
-    bottom: -3rem; // ! BREAKING: This is a temporary fix to remove the border line
+    bottom: -4em; // ! BREAKING: This is a temporary fix to remove the border line
     width: 100%;
 
     // TODO: Make the "wave" responsive as well.s
@@ -103,7 +121,7 @@ section.fullheight {
   background-color: #2f2f42;
 
   p {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -132,7 +150,29 @@ section.fullheight {
 }
 
 // Load google fonts
-@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro&family=Dosis:wght@200;400;500&family=Poppins:wght@100;400;600&display=swap");
 
 // Import bootstrap
 @import "~bootstrap/scss/bootstrap";
+
+h1 {
+  font-size: 5.5rem !important;
+  font-weight: 200;
+}
+
+h2 {
+  font-size: 2.5rem !important;
+  font-weight: 500;
+}
+
+h3 {
+  font-weight: 500 !important;
+}
+
+.dosis {
+  font-family: $headings-font-family !important;
+}
+
+.poppins {
+  font-family: $font-family-sans-serif !important;
+}
