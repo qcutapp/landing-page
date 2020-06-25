@@ -1,1 +1,0 @@
-{"version":3,"sources":["js/index.js"],"names":["console","log"],"mappings":";AAAA,aAEAA,QAAQC,IAAI","file":"js.33bd4e9b.js","sourceRoot":"../src","sourcesContent":["\"use strict\";\n\nconsole.log(\"test\");\n"]}
