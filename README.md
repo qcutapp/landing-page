@@ -11,8 +11,10 @@ You require `node` and `npm` installed to bundle or develop the website. To clon
 ```bash
 # clone git repository
 git clone https://github.com/skdcodes/freelancer-web-Bootstrap_jQuery_AOS-Qcut_Landing_Page.git qcut
+
 # change to project directory
 cd qcut
+
 # install npm modules
 npm install
 ```
@@ -51,6 +53,6 @@ npm run deploy
 - Bundler - [Parcel](https://parceljs.org/)
 - Animations - [Animate on Scroll](http://michalsnik.github.io/aos/)
 
-# Notes
+# Future
 
 1. Make sure the "Venues" contents wrap.

@@ -1,5 +1,5 @@
 // Load Fonts
-@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Poppins:wght@100;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;500&family=Poppins:wght@100;400;600&display=swap");
 
 // Override Bootstrap variables
 $font-family-sans-serif: "Poppins";
@@ -87,7 +87,7 @@ div.anchor {
 
 .home {
   position: relative;
-  background: linear-gradient(75deg, $black 14%, $primary 60%) !important;
+  background: linear-gradient(to bottom right, $black 14%, $primary 60%) !important;
 
   .row {
     @include media-breakpoint-up($breakpointFor100vh) {
@@ -123,10 +123,6 @@ div.anchor {
   }
 }
 
-.spacer {
-  height: 6rem;
-}
-
 .btn-rounded {
   border-radius: 1.5rem;
 }
@@ -136,6 +132,9 @@ div.anchor {
   .howitworks-image img {
     max-height: 70vh;
     width: auto;
+  }
+  h2{
+    font-size: 3rem;
   }
   p {
     width: 50%;
@@ -166,7 +165,8 @@ div.anchor {
 .covid-19 {
   background: url("../images/people.png") center no-repeat;
   background-size: cover;
-  .card, .card-body  {
+  .card,
+  .card-body {
     border-radius: 1rem;
   }
 }
