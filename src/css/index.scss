@@ -1,26 +1,69 @@
-// Theme variables and overrides
+// Load Fonts
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Poppins:wght@100;400;600&display=swap");
+
+// Override Bootstrap variables
 $font-family-sans-serif: "Poppins";
 $headings-font-family: "Dosis";
-$tagline-font-family: "Poppins";
-$navbar-height: 56px; // computed manually
 
-$headings-font-weight: 200;
-$red: rgba(255, 30, 60);
+$primary: rgba(255, 30, 60);
 
-// Load bootstrap variables
+// Load Bootstrap variables
 @import "~bootstrap/scss/_functions";
 @import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/_mixins";
 
-// Default desktop breakpoint from bootstrap
-$breakpointFor100vh: map-get($grid-breakpoints, "md");
+// My Variables
+$navbar-height: 56px; // computed manually
+$tagline-font-weight: 100;
+$h1-font-weight: 200;
+$h1-lg-font-size: 5.5rem;
+$h2-lg-font-size: 2.5rem;
+
+// !NOT REQUIRED: Breakpoints
+$breakpointFor100vh: "lg";
+$breakpointForLargeFonts: "xl";
+
+// Load Bootstrap components;
+@import "~bootstrap/scss/_root";
+@import "~bootstrap/scss/_reboot";
+@import "~bootstrap/scss/_type";
+@import "~bootstrap/scss/_images";
+@import "~bootstrap/scss/_grid";
+@import "~bootstrap/scss/_buttons";
+@import "~bootstrap/scss/_transitions";
+@import "~bootstrap/scss/_nav";
+@import "~bootstrap/scss/_navbar";
+@import "~bootstrap/scss/_card";
+@import "~bootstrap/scss/_utilities";
+
+// My Style (Mobile First - https://getbootstrap.com/)
+
+h1 {
+  font-weight: $h1-font-weight;
+}
+
+.tagline {
+  font-weight: 100;
+  font-size: $h2-font-size;
+}
+
+@include media-breakpoint-up($breakpointForLargeFonts) {
+  h1 {
+    font-size: $h1-lg-font-size;
+  }
+  h2 {
+    font-size: $h2-lg-font-size;
+  }
+}
 
 .navbar {
-  @media (min-width: $breakpointFor100vh) {
+  background-color: $primary;
+
+  @include media-breakpoint-up("md") {
     background-color: transparent;
-  }
-  background-color: #b71632;
-  &.has-bg {
-    background-color: #b71632;
+    &.has-bg {
+      background-color: $primary;
+    }
   }
 }
 
@@ -31,41 +74,36 @@ div.anchor {
   visibility: hidden;
 }
 
-.buttons {
-  button {
-    border-radius: 1.5rem;
+// Fullheight on Medium devices.
+.fullheight .row {
+  @include media-breakpoint-up($breakpointFor100vh) {
+    height: calc(100vh - #{$navbar-height});
   }
-}
-
-// full height on medium devices
-section.fullheight {
-  .row {
-    @media (min-width: $breakpointFor100vh) {
-      height: calc(100vh - 56px); // TODO: Using $navbar-height is breaking
-    }
-    .col-sm {
-      height: 100%;
-    }
+  .col-sm {
+    height: 100%;
   }
-}
-
-@media (min-width: $breakpointFor100vh) {
-  h1 {
-    font-size: 4.5rem !important;
-  }
+  overflow: hidden;
 }
 
 .home {
   position: relative;
-  background: linear-gradient(75deg, #000000 14%, #b71632 60%) !important;
+  background: linear-gradient(75deg, $black 14%, $primary 60%) !important;
 
   .row {
-    .phone {
-      padding-top: #{$navbar-height * 2} !important;
+    @include media-breakpoint-up($breakpointFor100vh) {
+      height: 100vh;
     }
 
-    @media (min-width: $breakpointFor100vh) {
-      height: 100vh !important; // TODO: Using $navbar-height is breaking
+    @include media-breakpoint-down($breakpointFor100vh) {
+      .home-brand {
+        padding-top: #{$navbar-height * 2} !important;
+      }
+    }
+
+    @include media-breakpoint-up($breakpointFor100vh) {
+      .home-phone {
+        padding-top: #{$navbar-height * 2} !important;
+      }
     }
   }
 
@@ -73,19 +111,13 @@ section.fullheight {
     z-index: 100;
   }
 
-  .tagline {
-    font-family: $tagline-font-family;
-    font-weight: 100;
-    font-size: 2rem !important;
-  }
-
   .overlay {
     position: absolute;
     left: 0;
-    bottom: -4em; // ! BREAKING: This is a temporary fix to remove the border line
+    bottom: -4em;
     width: 100%;
 
-    // TODO: Make the "wave" responsive as well.s
+    // TODO: Make the "wave" responsive as well
     img {
     }
   }
@@ -95,20 +127,27 @@ section.fullheight {
   height: 6rem;
 }
 
+.btn-rounded {
+  border-radius: 1.5rem;
+}
+
 // TODO: Images need to resize as per content
 .howitworks {
   .howitworks-image img {
-    max-width: 70%;
-    height: auto;
+    max-height: 70vh;
+    width: auto;
+  }
+  p {
+    width: 50%;
   }
 }
 
 .features {
   background: linear-gradient(
     45deg,
-    rgba(246, 87, 75, 1) 0%,
+    $primary 0%,
     rgba(183, 22, 44, 1) 45%,
-    rgba(219, 60, 48, 1) 100%
+    $primary 100%
   );
 
   .feature-image img {
@@ -119,15 +158,17 @@ section.fullheight {
 
 .venues {
   background-color: #2f2f42;
-
   p {
-    font-size: 0.875rem;
+    font-size: 0.875em;
   }
 }
 
 .covid-19 {
   background: url("../images/people.png") center no-repeat;
   background-size: cover;
+  .card, .card-body  {
+    border-radius: 1rem;
+  }
 }
 
 .contact {
@@ -140,39 +181,7 @@ section.fullheight {
   }
 }
 
-.text-brand-red {
-  color: #e74c3c !important;
-}
-
 .img-fit {
   max-height: 100%;
   max-width: 100%;
-}
-
-// Load google fonts
-@import url("https://fonts.googleapis.com/css2?family=Advent+Pro&family=Dosis:wght@200;400;500&family=Poppins:wght@100;400;600&display=swap");
-
-// Import bootstrap
-@import "~bootstrap/scss/bootstrap";
-
-h1 {
-  font-size: 5.5rem !important;
-  font-weight: 200;
-}
-
-h2 {
-  font-size: 2.5rem !important;
-  font-weight: 500;
-}
-
-h3 {
-  font-weight: 500 !important;
-}
-
-.dosis {
-  font-family: $headings-font-family !important;
-}
-
-.poppins {
-  font-family: $font-family-sans-serif !important;
 }
