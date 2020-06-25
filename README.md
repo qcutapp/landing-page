@@ -56,3 +56,4 @@ npm run deploy
 # Future
 
 1. Make sure the "Venues" contents wrap.
+2. Try to wrap each fullheight column's content for low view heights.
