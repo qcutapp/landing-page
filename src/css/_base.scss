@@ -1,0 +1,26 @@
+// Override Bootstrap variables
+$font-family-sans-serif: "Poppins";
+$headings-font-family: "Dosis";
+
+$primary: rgba(255, 30, 60);
+
+// Load Bootstrap variables
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/_mixins";
+
+// My Variables
+$navbar-height: 56px; // computed manually
+$tagline-font-weight: 100;
+$h1-font-weight: 200;
+$h1-lg-font-size: 5.5rem;
+$h2-lg-font-size: 2.5rem;
+
+$breakpointFor100vh: "lg";
+$breakpointForLargeFonts: "xl";
+
+// Load Bootstrap components;
+@import "~bootstrap/scss/_root";
+@import "~bootstrap/scss/_reboot";
+@import "~bootstrap/scss/_type";
+@import "~bootstrap/scss/_grid";

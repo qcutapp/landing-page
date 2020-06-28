@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="favicon.png" type="image/png" sizes="48x48" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/forgot.scss" />
+
+    <title>Forgot Email</title>
+  </head>
+  <body class="my-3 mx-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm col-lg-5">
+          <h1>Forgot Password</h1>
+          <p class="text-muted">
+            Please enter your email address below to reset password.
+          </p>
+          <div id="status">
+            <div class="alert alert-success" role="alert" id="status-success">
+              Reset email sent! Check your inbox.
+            </div>
+            <div
+              class="alert alert-danger"
+              role="alert"
+              id="status-error"
+            ></div>
+          </div>
+          <input type="email" class="form-control" placeholder="Enter email" />
+          <button type="submit" class="btn btn-primary btn-block my-3">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- Javascript -->
+  <script src="js/forgot.js"></script>
+</html>
